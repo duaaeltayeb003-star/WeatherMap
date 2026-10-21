@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherMap - Advanced Weather Application</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" 
+          crossorigin=""/>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Layer -->
+    <div class="background-layer"></div>
+
+    <!-- Header -->
+    <header class="glass-header">
+        <div class="header-content">
+            <h1>🌍 WeatherMap </h1>
+            <button id="theme-toggle" class="btn-icon" title="Toggle Dark/Light Mode">🌙</button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-container">
+        <!-- Search Section -->
+        <section class="search-section glass-card">
+            <form id="weather-form">
+                <div class="input-group">
+                    <input type="text" id="city-input" placeholder="Enter city name OR coordinates (e.g., Khartoum OR 15.5007, 32.5599)..." required autocomplete="off">
+                    <button type="submit" class="btn-primary">🔍 Get Weather</button>
+                </div>
+                <button type="button" id="location-btn" class="btn-secondary">📍 Use My Location</button>
+            </form>
+        </section>
+
+        <!-- Weather Display Section -->
+        <section id="weather-display" class="weather-display hidden">
+            <div class="current-weather-card glass-card">
+                <div class="weather-main">
+                    <div class="weather-icon-container">
+                        <img id="weather-icon" src="" alt="Weather Icon" class="weather-icon-large">
+                        <div id="weather-emoji-fallback" class="weather-emoji-fallback" style="display:none;"></div>
+                    </div>
+                    <div class="weather-info">
+                        <h2 id="city-name" class="city-name">--</h2>
+                        <div class="temperature-display">
+                            <span id="temperature" class="temperature">--°C</span>
+                        </div>
+                        <p id="weather-description" class="weather-description">--</p>
+                    </div>
+                </div>
+
+                <!-- Share Dropdown -->
+                <div class="share-dropdown">
+                    <button id="btn-share-toggle" class="action-btn share-btn">
+                        📤 Share Weather
+                    </button>
+                    <div id="share-options" class="share-options hidden">
+                        <button id="btn-share-copy" class="share-option">📋 Copy</button>
+                        <button id="btn-share-facebook" class="share-option">📘 Facebook</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Map Container (70% viewport height) -->
+        <div id="map" class="glass-map"></div>
+
+        <!-- Favorites Section -->
+        <section class="favorites-section glass-card">
+            <h3>⭐ Favorite Cities</h3>
+            <div id="favorites-list">
+                <p class="no-favorites">No favorite cities yet. Add one from the map!</p>
+            </div>
+        </section>
+
+        <!-- Loading Spinner -->
+        <div id="loading-spinner" class="spinner hidden">
+            <div class="spinner-ring"></div>
+            <p>Loading weather data...</p>
+        </div>
+
+        <!-- Error/Success Alert -->
+        <div id="alert-box" class="alert hidden"></div>
+
+        <!-- AI Chatbot Toggle Button -->
+        <button id="ai-chat-toggle" class="btn-ai" title="AI Weather Assistant">🤖</button>
+        
+        <!-- AI Chatbot Modal -->
+        <div id="ai-chat-modal" class="modal hidden">
+            <div class="modal-content glass-card">
+                <span class="close-modal">&times;</span>
+                <h3>🤖 Weather AI Assistant</h3>
+                <p class="chatbot-hint">Ask me about humidity, wind, pressure, or forecast!</p>
+                <div id="chat-messages"></div>
+                <form id="ai-chat-form">
+                    <input type="text" id="ai-input" placeholder="Ask about the weather..." required autocomplete="off">
+                    <button type="submit">Send</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="glass-footer">
+        <p>WeatherMap  - Advanced Web Technologies Project | Data by OpenWeatherMap</p>
+    </footer>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" 
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" 
+            crossorigin=""></script>
+    
+    <!-- Custom JS (ES6 Modules) -->
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
